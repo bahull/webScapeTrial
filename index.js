@@ -14,4 +14,9 @@ const writeToFile = data => {
   const browser = await puppeteer.launch({ headless: false });
   const page = await browser.newPage();
   await page.goto("https://en.wikipedia.org/wiki/Main_Page");
+  await sleep(page, 60000);
+  for (let i = 0; i < 10; i++) {
+    await page.click("#n-randompage");
+    const paragraphs = await page.$$("p");
+  }
 })();
